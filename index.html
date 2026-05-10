@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Verde Menta</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/favicon.png" />
+  </head>
+  <body>
+    <header class="main-header">
+      <nav class="nav-container">
+        <div class="logo">
+          <a href="/">Verde Menta</a>
+        </div>
+
+        <ul class="nav-menu">
+          <li>
+            <a href="#" class="nav-item" data-category="cat1">Producto 1</a>
+          </li>
+          <li>
+            <a href="#" class="nav-item" data-category="cat2">Producto 2</a>
+          </li>
+          <li>
+            <a href="#" class="nav-item" data-category="cat3">Producto 3</a>
+          </li>
+        </ul>
+
+        <div class="header-icons">
+          <button id="cart-btn" class="cart-button">
+            <img src="images/cart.png" alt="장바구니" class="cart-image" />
+            <span id="cart-count" class="count-badge">0</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="shop" class="shop-section">
+        <div class="container">
+          <div id="product-list" class="product-grid">
+            <p class="loading-msg">상품을 불러오는 중입니다...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="main-footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h2 class="footer-logo">Verde Menta</h2>
+          <p>
+            당신의 일상에 민트빛 싱그러움을 더하는<br />테크놀로지
+            셀렉트샵입니다.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#shop">Tienda (상점)</a></li>
+            <li><a href="#about">Sobre Nosotros (소개)</a></li>
+            <li><a href="#contact">Contacto (문의)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <ul>
+            <li>📧 hola@verdementa.com</li>
+            <li>📱 WhatsApp: +123 456 789</li>
+            <li>📍 Seoul, Korea</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="copyright">&copy; 2026 Verde Menta. All rights reserved.</div>
+    </footer>
+
+    <!-- 플로팅 왓츠앱 버튼 -->
+    <a
+      href="https://wa.me/5491112345678"
+      class="whatsapp-float"
+      target="_blank"
+      aria-label="WhatsApp 상담"
+    >
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+        alt="WhatsApp"
+      />
+    </a>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

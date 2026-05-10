@@ -1,0 +1,35 @@
+@import url("./styles/1-header.css");
+@import url("./styles/2-main.css");
+@import url("./styles/3-footer.css");
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap");
+
+:root {
+  --main-mint: #26a69a; /* 배경용 짙은 민트 */
+  --light-mint: #b2dfdb; /* 포인트용 연한 민트 */
+  --accent-green: #00796b; /* 강조색 */
+  --dark-text: #212121; /* 글자색 */
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  color: var(--white);
+  line-height: 1.6;
+}
