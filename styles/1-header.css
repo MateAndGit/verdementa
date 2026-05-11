@@ -10,12 +10,13 @@
 }
 
 .nav-container {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
 }
 
 .logo,
@@ -115,7 +116,7 @@
     justify-content: center;
     align-items: center;
     gap: 15px;
-    padding: 15px 0;
+    padding: 15px 20px; /* 양옆 패딩 20px 추가하여 푸터/메인과 통일 */
   }
 
   .logo {

@@ -9,28 +9,40 @@
 }
 
 .footer-container {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 40px;
-  text-align: center;
+  padding: 0 20px;
 }
 
 .footer-section {
-  flex: 1;
+  flex: 1; /* flex: 0 1 auto에서 다시 1로 변경하여 균형을 맞춤 */
 }
 
-.footer-section h4::after {
-  left: 50%;
-  transform: translateX(-50%);
+.footer-section:first-child {
+  text-align: left;
+}
+
+.footer-section:last-child {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* 우측 정렬 강화 */
+}
+
+.footer-section:last-child h4::after {
+  left: auto;
+  right: 0;
+  transform: none;
 }
 
 .footer-logo {
-  font-size: 2rem;
+  font-size: 2.5rem; /* 헤더 로고와 크기 통일 */
   font-weight: 700;
-  color: var(--main-mint);
+  color: var(--light-mint); /* 헤더 로고와 색상 통일 */
   margin-bottom: 15px;
 }
 
@@ -76,7 +88,6 @@
 .footer-section a:hover {
   opacity: 1;
   color: var(--main-mint);
-  padding-left: 5px;
 }
 
 .copyright {
