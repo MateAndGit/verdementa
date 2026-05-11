@@ -28,7 +28,7 @@
   justify-content: flex-end;
 }
 
-.logo a {
+.logo span {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--light-mint); /* 어두운 배경에서 빛나는 로고 */
@@ -124,7 +124,7 @@
     margin-bottom: 5px;
   }
 
-  .logo a {
+  .logo span {
     font-size: 2rem; /* 모바일에서 적절한 로고 크기 */
     display: block;
     width: 100%;

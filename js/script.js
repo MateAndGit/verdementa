@@ -46,19 +46,28 @@ function renderProducts(categoryName) {
       rawImage.includes("instagram.com/reels/") ||
       rawImage.includes("instagram.com/reel/")
     ) {
-      const baseUrl = rawImage.split("?")[0];
-      const embedUrl = baseUrl.endsWith("/")
-        ? baseUrl + "embed"
-        : baseUrl + "/embed";
+      // 1. 쿼리스트링(?...) 제거
+      let cleanUrl = rawImage.split("?")[0];
+      // 2. 끝에 붙은 슬래시(/) 제거
+      if (cleanUrl.endsWith("/")) cleanUrl = cleanUrl.slice(0, -1);
+      // 3. 이미 /embed가 붙어있는 경우 중복 방지 처리 후 최종 URL 생성
+      const embedUrl = cleanUrl.endsWith("/embed") ? cleanUrl : `${cleanUrl}/embed`;
 
       mediaHTML = `
-        <iframe 
-          src="${embedUrl}" 
-          class="product-insta-embed" 
-          frameborder="0" 
-          scrolling="no" 
-          allowtransparency="true">
-        </iframe>`;
+        <div class="media-container" style="position: relative; width: 100%; height: 100%;">
+          <img 
+            src="https://placehold.jp/24/064e3b/ffffff/300x300.png?text=VerdeMenta" 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;"
+          >
+          <iframe 
+            src="${embedUrl}" 
+            class="product-insta-embed" 
+            style="position: absolute; z-index: 2;"
+            frameborder="0" 
+            scrolling="no" 
+            allowtransparency="true">
+          </iframe>
+        </div>`;
     } else if (
       rawImage.toLowerCase().endsWith(".mp4") ||
       rawImage.toLowerCase().endsWith(".webm") ||
@@ -187,7 +196,7 @@ document.getElementById("checkout-btn").addEventListener("click", () => {
 
   const message = `Hola Verde Menta! Quisiera consultar por un pedido de $${total.toLocaleString("es-AR")}. ¿Tienen disponibilidad y cuanto cuesta el envio?`;
 
-  const whatsappUrl = `https://wa.me/5493434681840?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/5493436210934?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, "_blank");
 });
 
