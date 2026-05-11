@@ -121,3 +121,74 @@
   width: 35px;
   height: 35px;
 }
+
+/* ==========================================================================
+   Mobile Environment (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .shop-section {
+    padding: 40px 0;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2-column layout for mobile */
+    gap: 15px;
+  }
+
+  .product-image img {
+    height: 180px;
+  }
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .product-info h3 {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    height: 2.4em; /* Keep height consistent for 2 lines */
+    overflow: hidden;
+  }
+
+  .product-info .price {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+
+  .product-info .description {
+    display: none; /* Hide description on mobile for cleaner look */
+  }
+
+  .add-to-cart-btn {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 25px;
+    right: 25px;
+  }
+
+  .whatsapp-float img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr; /* 1-column for very small screens */
+  }
+
+  .product-image img {
+    height: 250px;
+  }
+}

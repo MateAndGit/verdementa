@@ -88,3 +88,75 @@
   border: 3px solid var(--white);
   z-index: 10;
 }
+
+/* ==========================================================================
+   Mobile Environment (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .nav-container {
+    display: flex;
+    flex-flow: row wrap; /* 로고를 100% 채워서 아래로 내리기 위해 wrap 사용 */
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+  }
+
+  .logo {
+    flex: 0 0 100%; /* 로고가 가로 전체를 차지하게 하여 다음 요소들을 아래로 밀어냄 */
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .logo a {
+    font-size: 2rem; /* 모바일에서 적절한 로고 크기 */
+    display: block;
+    width: 100%;
+  }
+
+  .nav-menu {
+    flex: none; /* Inherited flex: 2 제거 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+  }
+
+  .nav-menu a {
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+
+  .header-icons {
+    flex: none; /* Inherited flex: 1 제거 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cart-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cart-image {
+    width: 30px;
+    height: 30px;
+  }
+
+  .count-badge {
+    min-width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    border-width: 1.5px;
+    top: -2px;
+    right: -2px;
+  }
+}
