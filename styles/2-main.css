@@ -1,6 +1,6 @@
 .shop-section {
   padding: 80px 0;
-  background-color: var(--white);
+  background-color: transparent;
 }
 
 .container {
@@ -22,18 +22,59 @@
   gap: 30px;
 }
 
-.product-card {
-  background: var(--white);
-  border-radius: 15px;
+/* 인스타그램 임베드 스타일 (UI 숨기기 위한 크롭 처리) */
+.product-image {
+  position: relative;
+  width: 100%;
+  height: 300px; /* 고정된 상품 이미지 높이 */
+  background: #064e3b; /* 카드 배경과 어우러지는 딥 그린으로 변경 (흰색 잔상 방지) */
+  border-radius: 20px 20px 0 0;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
-  border: 1px solid var(--light-mint);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-insta-embed {
+  position: absolute;
+  top: -65px; /* 헤더 더 깊게 가리기 */
+  width: calc(100% + 4px); /* 좌우 1px씩 더 넓혀서 측면 흰색 선 강제로 덮기 */
+  left: -2px;
+  height: 480px;
+  border: none;
+  background: transparent; /* 흰색 배경 제거 */
+  pointer-events: none;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 비디오 파일 스타일 */
+.product-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미와 동일하게 꽉 채움 */
+  border-radius: 8px 8px 0 0;
+}
+
+.product-card {
+  background: rgba(255, 255, 255, 0.05); /* 투명한 카드 느낌 */
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .product-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  transform: translateY(-15px) scale(1.02);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: var(--light-mint);
 }
 
 .product-image img {
@@ -48,49 +89,49 @@
 }
 
 .product-info h3 {
-  font-size: 1.2rem;
-  color: var(--dark-text);
-  margin-bottom: 10px;
+  font-size: 1.3rem;
+  color: var(--white);
+  margin-bottom: 12px;
+  font-weight: 600;
 }
 
 .product-info .price {
-  color: var(--main-mint);
-  font-weight: 700;
-  font-size: 1.3rem;
-  margin-bottom: 15px;
+  color: var(--light-mint);
+  font-weight: 800;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(209, 250, 229, 0.2);
 }
 
 .product-info .description {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 10px;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7); /* 💡 가독성을 위해 훨씬 밝은 흰색 투명도로 변경 */
+  margin-bottom: 20px;
+  line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.product-info h3 {
-  margin-bottom: 8px;
-  font-size: 1.2rem;
-  color: var(--dark-text);
-}
-
 .add-to-cart-btn {
   width: 100%;
-  background-color: var(--accent-green);
+  background: linear-gradient(45deg, var(--main-mint), #10b981);
   color: var(--white);
   border: none;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 14px;
+  border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(10, 141, 115, 0.3);
 }
 
 .add-to-cart-btn:hover {
-  background-color: var(--main-mint);
+  background: linear-gradient(45deg, #10b981, var(--light-mint));
+  color: var(--accent-green);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(10, 141, 115, 0.5);
 }
 
 /* 플로팅 왓츠앱 버튼 스타일 */
@@ -140,8 +181,22 @@
     gap: 15px;
   }
 
+  .product-image {
+    height: 180px; /* 모바일 그리드에 맞춘 높이 조정 */
+    border-radius: 15px 15px 0 0;
+  }
+
+  .product-insta-embed {
+    top: -50px; /* 모바일에서도 헤더 더 확실히 가리기 */
+    height: 320px;
+    width: calc(
+      100% + 6px
+    ); /* 모바일은 오차가 더 클 수 있어 조금 더 넓게 설정 */
+    left: -3px;
+  }
+
   .product-image img {
-    height: 180px;
+    height: 100%;
   }
 
   .product-info {

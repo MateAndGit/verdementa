@@ -14,11 +14,11 @@ async function init() {
       const cols = row.split(",");
       return {
         id: cols[0]?.trim(),
-        category: cols[1]?.trim(),
-        name: cols[2]?.trim(),
-        price: cols[3]?.trim(),
-        image: cols[4]?.trim(),
-        desc: cols[5]?.trim(),
+        category: cols[1]?.trim(), // categoria
+        name: cols[2]?.trim(), // nombre
+        price: cols[3]?.trim(), // precio
+        image: cols[4]?.trim(), // imagen
+        desc: cols[5]?.trim(), // descripcion
       };
     });
 
@@ -28,7 +28,7 @@ async function init() {
   }
 }
 
-// 상품 리스트 렌더링
+// 상품 리스트 렌더링 (인스타그램 주소 대응 버전)
 function renderProducts(categoryName) {
   const grid = document.getElementById("product-list");
   if (!grid) return;
@@ -37,17 +37,54 @@ function renderProducts(categoryName) {
   const filtered = allProducts.filter((p) => p.category === categoryName);
 
   filtered.forEach((p) => {
+    let mediaHTML = "";
+    const rawImage = p.image || "";
+
+    // 💡 인스타그램 일반 게시물 또는 릴스 주소인지 확인
+    if (
+      rawImage.includes("instagram.com/p/") ||
+      rawImage.includes("instagram.com/reels/") ||
+      rawImage.includes("instagram.com/reel/")
+    ) {
+      const baseUrl = rawImage.split("?")[0];
+      const embedUrl = baseUrl.endsWith("/")
+        ? baseUrl + "embed"
+        : baseUrl + "/embed";
+
+      mediaHTML = `
+        <iframe 
+          src="${embedUrl}" 
+          class="product-insta-embed" 
+          frameborder="0" 
+          scrolling="no" 
+          allowtransparency="true">
+        </iframe>`;
+    } else if (
+      rawImage.toLowerCase().endsWith(".mp4") ||
+      rawImage.toLowerCase().endsWith(".webm") ||
+      rawImage.toLowerCase().endsWith(".mov")
+    ) {
+      // 🎥 직접 비디오 파일 주소인 경우
+      mediaHTML = `
+        <video class="product-video" autoplay loop muted playsinline>
+          <source src="${rawImage}" type="video/mp4">
+        </video>`;
+    } else {
+      // 일반 이미지 주소 처리
+      mediaHTML = `<img src="${rawImage}" alt="${p.name}" onerror="this.src='https://placehold.jp/24/00796b/ffffff/300x300.png?text=VerdeMenta'">`;
+    }
+
     const card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
         <div class="product-image">
-            <img src="${p.image}" alt="${p.name}" onerror="this.src='https://placehold.jp/24/00796b/ffffff/300x300.png?text=VerdeMenta'">
+            ${mediaHTML}
         </div>
         <div class="product-info">
             <h3>${p.name}</h3>
-            <p class="description">${p.desc || "싱그러운 민트 아이템입니다."}</p>
-            <p class="price">₩${Number(p.price).toLocaleString()}</p>
-            <button class="add-to-cart-btn" onclick="addToCart('${p.id}')">담기 🛒</button>
+            <p class="description">${p.desc || "Un producto fresco de Verde Menta."}</p>
+            <p class="price">$${Number(p.price).toLocaleString("es-AR")}</p>
+            <button class="add-to-cart-btn" onclick="addToCart('${p.id}')">Agregar 🛒</button>
         </div>
     `;
     grid.appendChild(card);
@@ -67,7 +104,6 @@ function addToCart(productId) {
 
   updateCartCount();
   renderCart(); // 장바구니 내부 그리기
-  alert(`[${product.name}] 상품이 담겼습니다.`);
 }
 
 // 2. 장바구니 배지 숫자 업데이트
@@ -99,18 +135,18 @@ function renderCart() {
     div.innerHTML = `
       <div class="cart-item-info">
         <h4>${item.name}</h4>
-        <p>₩${Number(item.price).toLocaleString()} x ${item.quantity}</p>
+        <p>$${Number(item.price).toLocaleString("es-AR")} x ${item.quantity}</p>
       </div>
       <div class="cart-item-btns">
         <button onclick="changeQty('${item.id}', 1)">+</button>
         <button onclick="changeQty('${item.id}', -1)">-</button>
-        <button class="del-btn" onclick="removeItem('${item.id}')">취소</button>
+        <button class="del-btn" onclick="removeItem('${item.id}')">Eliminar</button>
       </div>
     `;
     cartList.appendChild(div);
   });
 
-  totalAmount.innerText = `₩${total.toLocaleString()}`;
+  totalAmount.innerText = `$${total.toLocaleString("es-AR")}`;
 }
 
 // 수량 조절 (+ / -)
@@ -142,20 +178,16 @@ document.getElementById("close-cart").addEventListener("click", () => {
 // 5. WhatsApp 주문하기 버튼
 document.getElementById("checkout-btn").addEventListener("click", () => {
   const cartItems = Object.values(cart);
-  if (cartItems.length === 0) return alert("장바구니가 비어있습니다.");
+  if (cartItems.length === 0) return alert("El carrito está vacío.");
 
-  let message = "안녕하세요! Verde Menta 주문 문의드립니다.\n\n";
   let total = 0;
-
   cartItems.forEach((item) => {
-    const subtotal = Number(item.price) * item.quantity;
-    message += `- ${item.name} (${item.quantity}개): ₩${subtotal.toLocaleString()}\n`;
-    total += subtotal;
+    total += Number(item.price) * item.quantity;
   });
 
-  message += `\n총 합계: ₩${total.toLocaleString()}\n배송 및 구매 가능 여부 확인 부탁드립니다!`;
+  const message = `Hola Verde Menta! Quisiera consultar por un pedido de $${total.toLocaleString("es-AR")}. ¿Tienen disponibilidad y cuanto cuesta el envio?`;
 
-  const whatsappUrl = `https://wa.me/5491112345678?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/5493434681840?text=${encodeURIComponent(message)}`;
   window.open(whatsappUrl, "_blank");
 });
 

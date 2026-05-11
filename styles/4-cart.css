@@ -7,12 +7,15 @@
   width: 400px;
   max-width: 90%; /* 모바일 대응 */
   height: 100%;
-  background: white;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+  background: rgba(6, 78, 59, 0.95); /* 딥 그린 반투명 배경 */
+  backdrop-filter: blur(20px);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
   transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   z-index: 9999;
   display: flex;
   flex-direction: column;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--white);
 }
 
 .cart-modal.active {
@@ -31,13 +34,13 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 15px;
 }
 
 .cart-header h2 {
   font-size: 1.5rem;
-  color: var(--dark-text);
+  color: var(--light-mint);
 }
 
 .close-btn {
@@ -45,7 +48,12 @@
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  color: #999;
+  color: var(--light-mint);
+  opacity: 0.7;
+}
+
+.close-btn:hover {
+  opacity: 1;
 }
 
 /* 장바구니 아이템 리스트 */
@@ -60,18 +68,19 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 0;
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .cart-item-info h4 {
   margin: 0 0 5px 0;
   font-size: 1.1rem;
-  color: #333 !important;
+  color: var(--white) !important;
   font-weight: bold;
 }
 
 .cart-item-info p {
-  color: #666;
+  color: var(--light-mint);
+  opacity: 0.8;
   font-size: 0.9rem;
 }
 
@@ -85,21 +94,22 @@
 .cart-item-btns button {
   width: 28px;
   height: 28px;
-  border: 1px solid #ddd;
-  background: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .cart-item-btns button:hover {
-  background: #f0f0f0;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .del-btn {
-  background: #fff0f0 !important;
-  color: #ff4d4d;
-  border-color: #ffcccc !important;
+  background: rgba(255, 77, 77, 0.15) !important;
+  color: #ff4d4d !important;
+  border-color: rgba(255, 77, 77, 0.3) !important;
   margin-left: 5px;
   font-size: 0.8rem;
   width: auto !important;
@@ -108,7 +118,7 @@
 
 /* 하단 합계 및 주문 버튼 */
 .cart-footer {
-  border-top: 2px solid #eee;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 20px;
 }
 
@@ -118,6 +128,11 @@
   font-size: 1.3rem;
   font-weight: bold;
   margin-bottom: 20px;
+  color: var(--white);
+}
+
+.total-price #cart-total-amount {
+  color: var(--light-mint);
 }
 
 .checkout-button {

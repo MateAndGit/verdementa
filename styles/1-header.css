@@ -1,10 +1,12 @@
 .main-header {
-  background-color: var(--light-mint);
-  padding: 20px 0;
+  background-color: rgba(6, 78, 59, 0.7); /* 깊은 에메랄드 투명 배경 */
+  backdrop-filter: blur(15px);
+  padding: 15px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-container {
@@ -29,7 +31,8 @@
 .logo a {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--accent-green);
+  color: var(--light-mint); /* 어두운 배경에서 빛나는 로고 */
+  text-shadow: 0 0 10px rgba(209, 250, 229, 0.3);
 }
 
 .nav-menu {
@@ -40,52 +43,65 @@
 }
 
 .nav-menu a {
-  color: var(--dark-text);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1.1rem;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: all 0.3s;
 }
 
 .nav-menu a:hover {
-  color: var(--accent-green);
+  color: var(--light-mint);
+  text-shadow: 0 0 8px rgba(209, 250, 229, 0.5);
 }
 
 .cart-button {
-  background: none;
-  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
   position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90px;
-  height: 90px;
-  padding: 0;
-}
-
-.cart-image {
   width: 70px;
   height: 70px;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  filter: saturate(1.5);
+  padding: 0;
+  transition: all 0.3s;
+}
+
+.cart-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.cart-icon-svg {
+  width: 32px;
+  height: 32px;
+  color: var(--light-mint);
+  transition: transform 0.3s ease;
+  margin-left: -10px; /* 아이콘을 왼쪽으로 이동 */
+}
+
+.cart-button:hover .cart-icon-svg {
+  transform: scale(1.1) translateX(-2px);
+  color: var(--white);
 }
 
 .count-badge {
   position: absolute;
-  top: 0px;
-  right: -5px;
+  top: 5px; /* 위치 소폭 조정 */
+  right: 5px; /* 위치 소폭 조정 */
   background-color: var(--accent-green);
   color: var(--white);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 800;
-  min-width: 35px;
-  height: 35px;
+  min-width: 30px;
+  height: 30px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid var(--white);
+  border: 2px solid var(--white);
   z-index: 10;
 }
 
@@ -139,16 +155,17 @@
   }
 
   .cart-button {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .cart-image {
-    width: 30px;
-    height: 30px;
+  .cart-icon-svg {
+    width: 24px;
+    height: 24px;
+    margin-left: -8px; /* 모바일에서도 왼쪽으로 이동 */
   }
 
   .count-badge {
@@ -156,7 +173,7 @@
     height: 18px;
     font-size: 0.7rem;
     border-width: 1.5px;
-    top: -2px;
-    right: -2px;
+    top: 5px; /* 모바일 배지 위치 최적화 */
+    right: 5px;
   }
 }

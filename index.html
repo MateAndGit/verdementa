@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +28,21 @@
 
         <div class="header-icons">
           <button id="cart-btn" class="cart-button">
-            <img src="images/cart.png" alt="장바구니" class="cart-image" />
+            <svg
+              class="cart-icon-svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path
+                d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+              ></path>
+            </svg>
             <span id="cart-count" class="count-badge">0</span>
           </button>
         </div>
@@ -39,7 +53,7 @@
       <section id="shop" class="shop-section">
         <div class="container">
           <div id="product-list" class="product-grid">
-            <p class="loading-msg">상품을 불러오는 중입니다...</p>
+            <p class="loading-msg">Cargando productos...</p>
           </div>
         </div>
       </section>
@@ -61,23 +75,25 @@
             <li>📍 Hernandarias, Entre Ríos.</li>
             <li>
               📱 WhatsApp:
-              <a href="https://wa.me/5493436210934" target="_blank"
-                >3436210934</a
+              <a href="https://wa.me/5493434681840" target="_blank"
+                >3434681840</a
               >
             </li>
           </ul>
         </div>
       </div>
 
-      <div class="copyright">&copy; 2026 Verde Menta. All rights reserved.</div>
+      <div class="copyright">
+        &copy; 2026 Verde Menta. Todos los derechos reservados.
+      </div>
     </footer>
 
     <!-- 플로팅 왓츠앱 버튼 -->
     <a
-      href="https://wa.me/5493436210934"
+      href="https://wa.me/5493434681840"
       class="whatsapp-float"
       target="_blank"
-      aria-label="WhatsApp 상담"
+      aria-label="Consulta por WhatsApp"
     >
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
@@ -88,7 +104,7 @@
     <div id="cart-modal" class="cart-modal">
       <div class="cart-content">
         <div class="cart-header">
-          <h2>Mi Carrito (장바구니)</h2>
+          <h2>Mi Carrito</h2>
           <button id="close-cart" class="close-btn">&times;</button>
         </div>
 
@@ -97,10 +113,10 @@
         <div class="cart-footer">
           <div class="total-price">
             <span>Total:</span>
-            <span id="cart-total-amount">₩0</span>
+            <span id="cart-total-amount">$0</span>
           </div>
           <button id="checkout-btn" class="checkout-button">
-            문의하기 (주문)
+            Consultar pedido
           </button>
         </div>
       </div>
